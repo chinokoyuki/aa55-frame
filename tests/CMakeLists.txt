@@ -6,7 +6,9 @@ target_link_libraries(aa55_frame_tests PRIVATE aa55::frame)
 if(MSVC)
     target_compile_options(aa55_frame_tests PRIVATE /W4)
 else()
-    target_compile_options(aa55_frame_tests PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(aa55_frame_tests PRIVATE
+        -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion
+    )
 endif()
 
 if(AA55_ENABLE_SANITIZERS AND CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")

@@ -17,10 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Configure
-        run: >-
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-          ${{ runner.os == 'Windows' && '' ||
-          '-DCMAKE_C_FLAGS=-Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion' }}
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
       - name: Build
         run: cmake --build build --config Debug
       - name: Test
