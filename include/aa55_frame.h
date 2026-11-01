@@ -59,11 +59,14 @@ static inline uint8_t aa55_crc8_update(uint8_t crc, uint8_t byte)
     return crc;
 }
 
-/* Calculate CRC8 over data. data must be valid when length is nonzero. */
-static inline uint8_t aa55_crc8(const uint8_t *data, uint8_t length)
+/*
+ * Calculate CRC8 over data. data must be valid when length is nonzero.
+ * length is size_t so that sizeof() arguments are not silently truncated.
+ */
+static inline uint8_t aa55_crc8(const uint8_t *data, size_t length)
 {
     uint8_t crc = 0U;
-    uint8_t i;
+    size_t i;
 
     for (i = 0; i < length; ++i)
     {
@@ -119,7 +122,7 @@ static inline aa55_status_t aa55_encode(uint8_t *out,
         out[4U + i] = payload[i];
     }
     out[4U + payload_length] =
-        aa55_crc8(&out[2], (uint8_t)(payload_length + 2U));
+        aa55_crc8(&out[2], (size_t)payload_length + 2U);
 
     *frame_size = required;
     return AA55_STATUS_OK;

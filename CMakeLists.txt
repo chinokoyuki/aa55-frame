@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(aa55_frame VERSION 1.0.0 LANGUAGES C)
+project(aa55_frame VERSION 1.1.0 LANGUAGES C)
 
 add_library(aa55_frame INTERFACE)
 add_library(aa55::frame ALIAS aa55_frame)

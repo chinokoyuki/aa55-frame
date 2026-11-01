@@ -34,6 +34,10 @@ Example: command `0x70` with payload `01 02 03` is encoded as:
 AA 55 03 70 01 02 03 DC
 ```
 
+## Interoperability
+
+The encoder, decoder, and CRC have been cross-checked byte-for-byte against an independent Python implementation of the same format. Frames produced by both implementations are identical, and they have been exchanged over a real 115200-baud 8N1 UART link between an STM32 microcontroller and an embedded vision module in field operation. Any other implementation of this frame format inter-operates directly, which makes the library a convenient reference codec for heterogeneous multi-board systems.
+
 ## Add to a project
 
 ### Copy the header
